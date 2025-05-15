@@ -4,6 +4,7 @@ package com.aleprimo.JobFlowApp.controllers;
 import com.aleprimo.JobFlowApp.controllers.dtos.CompanyDTO;
 import com.aleprimo.JobFlowApp.models.Company;
 import com.aleprimo.JobFlowApp.services.ICompanyService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,14 +42,14 @@ public class CompanyController {
     }
 
     @PostMapping("/saveCompany")
-    public ResponseEntity<CompanyDTO> createCompany(@RequestBody CompanyDTO companyDTO) throws URISyntaxException {
+    public ResponseEntity<CompanyDTO> createCompany(@Valid @RequestBody CompanyDTO companyDTO) throws URISyntaxException {
         Company company = mapToEntity(companyDTO);
         Company savedCompany = this.companyService.save(company);
         return ResponseEntity.created(new URI("/api/companies/" + savedCompany.getId())).body(mapToDTO(savedCompany));
     }
 
     @PutMapping("/updateCompany/{id}")
-    public ResponseEntity<CompanyDTO> updateCompany(@PathVariable Long id, @RequestBody CompanyDTO companyDTO) {
+    public ResponseEntity<CompanyDTO> updateCompany(@Valid @PathVariable Long id, @RequestBody CompanyDTO companyDTO) {
         Company company = mapToEntity(companyDTO);
         company.setId(id);
         Company updatedCompany = this.companyService.save(company);

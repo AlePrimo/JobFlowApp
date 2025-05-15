@@ -5,6 +5,7 @@ import com.aleprimo.JobFlowApp.models.Company;
 import com.aleprimo.JobFlowApp.models.Job;
 import com.aleprimo.JobFlowApp.services.ICompanyService;
 import com.aleprimo.JobFlowApp.services.IJobService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +62,7 @@ public class JobController {
 
 
     @PostMapping("/saveJob/{companyId}")
-    public ResponseEntity<JobDTO> createJob(@PathVariable Long companyId, @RequestBody JobDTO jobDTO) throws URISyntaxException {
+    public ResponseEntity<JobDTO> createJob(@Valid @PathVariable Long companyId, @RequestBody JobDTO jobDTO) throws URISyntaxException {
         Optional<Company> optionalCompany = this.companyService.findById(companyId);
         if (optionalCompany.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -77,7 +78,7 @@ public class JobController {
 
 
     @PutMapping("/updateJob/{companyId}/{jobId}")
-    public ResponseEntity<JobDTO> updateJob(@PathVariable Long companyId, @PathVariable Long jobId, @RequestBody JobDTO jobDTO) {
+    public ResponseEntity<JobDTO> updateJob(@Valid @PathVariable Long companyId, @PathVariable Long jobId, @RequestBody JobDTO jobDTO) {
         Optional<Company> optionalCompany = this.companyService.findById(companyId);
         Optional<Job> optionalJob = this.jobService.findById(jobId);
 

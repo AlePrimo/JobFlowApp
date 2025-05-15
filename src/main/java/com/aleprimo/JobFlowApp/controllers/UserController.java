@@ -3,6 +3,7 @@ package com.aleprimo.JobFlowApp.controllers;
 import com.aleprimo.JobFlowApp.controllers.dtos.UserEntityDTO;
 import com.aleprimo.JobFlowApp.models.UserEntity;
 import com.aleprimo.JobFlowApp.services.IUserEntityService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,14 +44,14 @@ public class UserController {
 
 
     @PostMapping("/saveUser")
-    public ResponseEntity<UserEntityDTO> createUser(@RequestBody UserEntityDTO userDTO) {
+    public ResponseEntity<UserEntityDTO> createUser( @Valid @RequestBody UserEntityDTO userDTO) {
         UserEntity newUser = this.userService.save(mapToEntity(userDTO));
         return ResponseEntity.ok(mapToDTO(newUser));
     }
 
 
     @PutMapping("/updateUser/{id}")
-    public ResponseEntity<UserEntityDTO> updateUser(@PathVariable Long id, @RequestBody UserEntityDTO userDTO) {
+    public ResponseEntity<UserEntityDTO> updateUser(@Valid @PathVariable Long id, @RequestBody UserEntityDTO userDTO) {
         UserEntity user = mapToEntity(userDTO);
         user.setId(id);
         this.userService.save(user);

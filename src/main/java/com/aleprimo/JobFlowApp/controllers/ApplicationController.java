@@ -10,6 +10,7 @@ import com.aleprimo.JobFlowApp.services.IApplicationService;
 import com.aleprimo.JobFlowApp.services.ICompanyService;
 import com.aleprimo.JobFlowApp.services.IJobService;
 import com.aleprimo.JobFlowApp.services.IUserEntityService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,7 @@ public class ApplicationController {
 
 
     @PostMapping("/createApplication/{userId}/{jobId}")
-    public ResponseEntity<ApplicationDTO> createApplication(@PathVariable Long userId, @PathVariable Long jobId) throws URISyntaxException {
+    public ResponseEntity<ApplicationDTO> createApplication(@Valid @PathVariable Long userId, @PathVariable Long jobId) throws URISyntaxException {
         UserEntity user = this.userService.findById(userId)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         Job job = this.jobService.findById(jobId)
@@ -60,7 +61,7 @@ public class ApplicationController {
 
 
     @PutMapping("/updateStatus/{companyId}/{applicationId}")
-    public ResponseEntity<ApplicationDTO> updateStatus(@PathVariable Long companyId,
+    public ResponseEntity<ApplicationDTO> updateStatus(@Valid @PathVariable Long companyId,
                                                        @PathVariable Long applicationId,
                                                        @RequestParam ApplicationStatus status) {
         Application application = this.applicationService.findById(applicationId)
