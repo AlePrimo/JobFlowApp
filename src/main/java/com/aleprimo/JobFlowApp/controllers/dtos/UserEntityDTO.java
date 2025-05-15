@@ -22,7 +22,7 @@ public class UserEntityDTO {
 
     Long id;
     @NotBlank(message = "El nombre completo no puede estar vacío")
-    @Size(min = 3, max = 30, message = "El nombre debe tener entre 3 y 100 caracteres")
+    @Size(min = 3, max = 30, message = "El nombre debe tener entre 3 y 30 caracteres")
     String fullName;
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El email debe tener un formato válido")
