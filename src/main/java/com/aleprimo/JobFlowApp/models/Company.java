@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,6 @@ public class Company {
     Long id;
     String name;
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Job> jobOffers;
+    List<Job> jobOffers = new ArrayList<>();
 
 }
