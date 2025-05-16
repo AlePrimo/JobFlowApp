@@ -38,4 +38,9 @@ private final IUserEntityRepository userEntityRepository;
     public void deleteById(Long id) {
        this.userEntityRepository.deleteById(id);
     }
+
+    @Override
+    public  Optional<UserEntity> findByEmail(String email) {
+        return this.userEntityRepository.findByEmail(email);
+    }
 }

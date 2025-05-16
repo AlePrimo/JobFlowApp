@@ -36,4 +36,9 @@ public class UserEntityServiceImpl implements IUserEntityService {
     public void deleteById(Long id) {
 this.userEntityDAO.deleteById(id);
     }
+
+    @Override
+    public Optional<UserEntity> findByEmail(String email) {
+        return this.userEntityDAO.findByEmail(email);
+    }
 }

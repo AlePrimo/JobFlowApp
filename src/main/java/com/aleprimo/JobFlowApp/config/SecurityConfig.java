@@ -23,6 +23,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/user/**", "/api/application/createApplication").hasRole("USER")
                         .requestMatchers("/api/company/**", "/api/jobs/**", "/api/application/**").hasRole("COMPANY")
+                        .requestMatchers("/api/user/downloadCV/**").permitAll()
                         .anyRequest().permitAll()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

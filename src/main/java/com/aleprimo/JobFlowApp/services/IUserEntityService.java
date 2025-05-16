@@ -11,6 +11,7 @@ public interface IUserEntityService {
     Optional<UserEntity> findById(Long id);
     UserEntity save(UserEntity user);
     void deleteById(Long id);
+    Optional<UserEntity> findByEmail(String email);
 
 
 }
