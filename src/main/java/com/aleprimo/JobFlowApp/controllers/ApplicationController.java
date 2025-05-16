@@ -10,6 +10,8 @@ import com.aleprimo.JobFlowApp.services.IApplicationService;
 import com.aleprimo.JobFlowApp.services.ICompanyService;
 import com.aleprimo.JobFlowApp.services.IJobService;
 import com.aleprimo.JobFlowApp.services.IUserEntityService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/application")
+@Tag(name = "Aplicaciones", description = "Manejo de las aplicaciones a empleos")
 public class ApplicationController {
 
     private final IApplicationService applicationService;
@@ -38,7 +41,7 @@ public class ApplicationController {
     }
 
 
-
+    @Operation(summary = "Postulacion de un usuario a un empleo")
     @PostMapping("/createApplication/{userId}/{jobId}")
     public ResponseEntity<ApplicationDTO> createApplication(@Valid @PathVariable Long userId, @PathVariable Long jobId) throws URISyntaxException {
         UserEntity user = this.userService.findById(userId)
@@ -59,7 +62,7 @@ public class ApplicationController {
 
 
 
-
+    @Operation(summary = "Actualizacion del estado de una postulacion por parte de la empresa")
     @PutMapping("/updateStatus/{companyId}/{applicationId}")
     public ResponseEntity<ApplicationDTO> updateStatus(@Valid @PathVariable Long companyId,
                                                        @PathVariable Long applicationId,
@@ -78,7 +81,7 @@ public class ApplicationController {
 
 
 
-
+    @Operation(summary = "Busqueda de una postulacion segun el ID de la empresa y el ID de la postulacion")
     @GetMapping("/findById/{companyId}/{applicationId}")
     public ResponseEntity<ApplicationDTO> getApplicationById(@PathVariable Long companyId,
                                                              @PathVariable Long applicationId) {
@@ -95,7 +98,7 @@ public class ApplicationController {
 
 
 
-
+    @Operation(summary = "Busqueda de todas las postulaciones de una empresa segun su ID")
     @GetMapping("/findAllByCompany/{companyId}")
     public ResponseEntity<List<ApplicationDTO>> getAllApplicationsByCompany(@PathVariable Long companyId) {
         List<Application> allApplications = this.applicationService.findAll();
@@ -108,7 +111,7 @@ public class ApplicationController {
     }
 
 
-
+    @Operation(summary = "Eliminacion de una postulacion segu ID de compañia y de aplicacion")
     @DeleteMapping("/deleteById/{companyId}/{applicationId}")
     public ResponseEntity<Void> deleteApplication(@PathVariable Long companyId,
                                                   @PathVariable Long applicationId) {

@@ -5,6 +5,8 @@ import com.aleprimo.JobFlowApp.models.Company;
 import com.aleprimo.JobFlowApp.models.Job;
 import com.aleprimo.JobFlowApp.services.ICompanyService;
 import com.aleprimo.JobFlowApp.services.IJobService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/jobs")
+@Tag(name = "Empleos", description = "Manejo de los empleos por parte de las empresas ")
 public class JobController {
 
     private final IJobService jobService;
@@ -28,7 +31,7 @@ public class JobController {
         this.companyService = companyService;
     }
 
-
+    @Operation(summary = "Busqueda de un empleo por ID  y por ID de la empresa")
     @GetMapping("/findById/{companyId}/{jobId}")
     public ResponseEntity<JobDTO> getJobById(@PathVariable Long companyId, @PathVariable Long jobId) {
         Optional<Job> optionalJob = this.jobService.findById(jobId);
@@ -44,7 +47,7 @@ public class JobController {
 
         return ResponseEntity.ok(mapToDTO(job));
     }
-
+    @Operation(summary = "Busqueda de todos las ofertas de empleo de una empresa por su ID")
     @GetMapping("/findByCompanyId/{companyId}")
     public ResponseEntity<List<JobDTO>> getJobsByCompany(@PathVariable Long companyId) {
         Optional<Company> optionalCompany = this.companyService.findById(companyId);
@@ -60,7 +63,7 @@ public class JobController {
         return ResponseEntity.ok(jobs);
     }
 
-
+    @Operation(summary = "Creacion de una oferta de empleo de una empresa segun su ID")
     @PostMapping("/saveJob/{companyId}")
     public ResponseEntity<JobDTO> createJob(@Valid @PathVariable Long companyId, @RequestBody JobDTO jobDTO) throws URISyntaxException {
         Optional<Company> optionalCompany = this.companyService.findById(companyId);
@@ -76,7 +79,7 @@ public class JobController {
     }
 
 
-
+    @Operation(summary = "Actualizacion de una oferta de empleo de una empresa segun su ID")
     @PutMapping("/updateJob/{companyId}/{jobId}")
     public ResponseEntity<JobDTO> updateJob(@Valid @PathVariable Long companyId, @PathVariable Long jobId, @RequestBody JobDTO jobDTO) {
         Optional<Company> optionalCompany = this.companyService.findById(companyId);
@@ -99,7 +102,7 @@ public class JobController {
     }
 
 
-
+    @Operation(summary = "Eliminacion de una oferta de empleo de una empresa segun su ID")
     @DeleteMapping("/deleteJob/{companyId}/{jobId}")
     public ResponseEntity<Void> deleteJob(@PathVariable Long companyId, @PathVariable Long jobId) {
         Optional<Job> optionalJob = this.jobService.findById(jobId);

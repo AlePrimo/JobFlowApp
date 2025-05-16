@@ -3,6 +3,8 @@ package com.aleprimo.JobFlowApp.controllers;
 import com.aleprimo.JobFlowApp.controllers.dtos.UserEntityDTO;
 import com.aleprimo.JobFlowApp.models.UserEntity;
 import com.aleprimo.JobFlowApp.services.IUserEntityService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
+@Tag(name = "Usuarios", description = "Manejo del CRUD de usuarios")
 public class UserController {
 
 
@@ -23,7 +26,7 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @Operation(summary = "Busqueda de todos los usuarios disponibles")
     @GetMapping
     public ResponseEntity<List<UserEntityDTO>> getAllUsers() {
         List<UserEntityDTO> userEntityDTOS = this.userService.findAll()
@@ -34,7 +37,7 @@ public class UserController {
         return ResponseEntity.ok(userEntityDTOS);
     }
 
-
+    @Operation(summary = "Busqueda de un usuario por su ID")
     @GetMapping("/findById/{id}")
     public ResponseEntity<UserEntityDTO> getUserById(@PathVariable Long id) {
         return this.userService.findById(id)
@@ -42,14 +45,14 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
+    @Operation(summary = "Creacion de un nuevo usuario")
     @PostMapping("/saveUser")
     public ResponseEntity<UserEntityDTO> createUser( @Valid @RequestBody UserEntityDTO userDTO) {
         UserEntity newUser = this.userService.save(mapToEntity(userDTO));
         return ResponseEntity.ok(mapToDTO(newUser));
     }
 
-
+    @Operation(summary = "Actualizacion  de un usuario")
     @PutMapping("/updateUser/{id}")
     public ResponseEntity<UserEntityDTO> updateUser(@Valid @PathVariable Long id, @RequestBody UserEntityDTO userDTO) {
         UserEntity user = mapToEntity(userDTO);
@@ -58,7 +61,7 @@ public class UserController {
         return ResponseEntity.ok(mapToDTO(user));
     }
 
-
+    @Operation(summary = "Eliminacion  de un usuario por su ID")
     @DeleteMapping("/deleteUser/{id}")
     public void deleteUser(@PathVariable Long id) {
        this.userService.deleteById(id);
