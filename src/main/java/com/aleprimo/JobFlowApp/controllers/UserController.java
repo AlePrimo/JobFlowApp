@@ -1,7 +1,9 @@
 package com.aleprimo.JobFlowApp.controllers;
 
 import com.aleprimo.JobFlowApp.controllers.dtos.UserEntityDTO;
+import com.aleprimo.JobFlowApp.models.Application;
 import com.aleprimo.JobFlowApp.models.UserEntity;
+import com.aleprimo.JobFlowApp.services.IApplicationService;
 import com.aleprimo.JobFlowApp.services.IUserEntityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -9,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,9 +24,11 @@ public class UserController {
 
 
     private final IUserEntityService userService;
+    private final IApplicationService applicationService;
 
-    public UserController(IUserEntityService userService) {
+    public UserController(IUserEntityService userService, IApplicationService applicationService) {
         this.userService = userService;
+        this.applicationService = applicationService;
     }
 
     @Operation(summary = "Busqueda de todos los usuarios disponibles")
@@ -70,12 +75,17 @@ public class UserController {
 
 
     private UserEntityDTO mapToDTO(UserEntity user) {
+        List<Long> appIds = user.getApplications() == null ? List.of() :
+                user.getApplications().stream().map(Application::getId).toList();
+
         UserEntityDTO dto = new UserEntityDTO();
         dto.setId(user.getId());
         dto.setFullName(user.getFullName());
         dto.setEmail(user.getEmail());
         dto.setBirthDate(user.getBirthDate());
         dto.setCvUrl(user.getCvUrl());
+        dto.setApplicationsIds(appIds);
+        dto.setRole(user.getRole());
         return dto;
     }
 
@@ -85,6 +95,16 @@ public class UserController {
         user.setEmail(dto.getEmail());
         user.setBirthDate(dto.getBirthDate());
         user.setCvUrl(dto.getCvUrl());
+        user.setRole(dto.getRole());
+        if (dto.getApplicationsIds() != null && !dto.getApplicationsIds().isEmpty()) {
+            List<Application> applications = new ArrayList<>();
+            for (Long appId : dto.getApplicationsIds()) {
+                this.applicationService.findById(appId).ifPresent(applications::add);
+            }
+            user.setApplications(applications);
+        }
+
+
         return user;
     }
 

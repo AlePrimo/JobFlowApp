@@ -1,7 +1,8 @@
 package com.aleprimo.JobFlowApp.controllers.dtos;
 
 import com.aleprimo.JobFlowApp.models.Application;
-import jakarta.persistence.Column;
+import com.aleprimo.JobFlowApp.models.Role;
+
 import jakarta.validation.constraints.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -32,7 +33,7 @@ public class UserEntityDTO {
     LocalDate birthDate;
     @URL(message = "La URL del CV debe ser válida")
     String cvUrl;
-    List<Application> applications = new ArrayList<>();
-
+    List<Long> applicationsIds = new ArrayList<>();
+    Role role;
 
 }

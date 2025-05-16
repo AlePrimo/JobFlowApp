@@ -30,7 +30,8 @@ public class UserEntity {
     String cvUrl;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Application> applications = new ArrayList<>();
-
+    @Enumerated(EnumType.STRING)
+    Role role;
 
 
 }
