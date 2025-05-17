@@ -1,23 +1,26 @@
 import React from "react";
-import UserList from "./components/UserList";
-import CompanyList from "./components/CompanyList";
-import JobList from "./components/JobList";
-import UploadCV from "./components/UploadCV";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import UserPage from "./pages/UserPage";
+import CompanyPage from "./pages/CompanyPage";
 
 function App() {
-
-  const userId = 1;
-
   return (
-    <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
-      <h1>JobFlow App (Frontend Básico)</h1>
-      <UserList />
-      <CompanyList />
-      <JobList />
-      <UploadCV userId={userId} />
-    </div>
+    <Router>
+      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
+        <h1>JobFlow App (Frontend Básico)</h1>
+
+        <nav style={{ marginBottom: "20px" }}>
+          <Link to="/user" style={{ marginRight: "10px" }}>Ingresar como Usuario</Link>
+          <Link to="/company">Ingresar como Compañía</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/company" element={<CompanyPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
