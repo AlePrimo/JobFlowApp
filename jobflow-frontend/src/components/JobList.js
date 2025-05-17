@@ -1,38 +1,38 @@
 import React, { useEffect, useState } from "react";
-import api from "../services/api";
-import JobForm from "./JobForm";
 
-export default function JobList() {
+function JobList({ companyId }) {
   const [jobs, setJobs] = useState([]);
-  const [companyId, setCompanyId] = useState(""); // Para buscar jobs por empresa
-
-  const fetchJobs = () => {
-    if (!companyId) return;
-    api.get(`/jobs/findAllByCompanyId/${companyId}`)
-      .then(res => setJobs(res.data))
-      .catch(console.error);
-  };
 
   useEffect(() => {
-    fetchJobs();
+    fetch(`http://localhost:8080/api/jobs/findByCompany/${companyId}`)
+      .then((res) => res.json())
+      .then((data) => setJobs(data))
+      .catch((error) => console.error("Error al obtener trabajos:", error));
   }, [companyId]);
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:8080/api/jobs/deleteJob/${companyId}/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        setJobs((prev) => prev.filter((job) => job.id !== id));
+      })
+      .catch((error) => console.error("Error al eliminar trabajo:", error));
+  };
 
   return (
     <div>
-      <h2>Trabajos</h2>
-      <input
-        type="text"
-        placeholder="ID de compañía"
-        value={companyId}
-        onChange={e => setCompanyId(e.target.value)}
-      />
-      <button onClick={fetchJobs}>Buscar trabajos</button>
-      <JobForm companyId={companyId} onJobAdded={fetchJobs} />
+      <h3>Trabajos de la compañía</h3>
       <ul>
-        {jobs.map(job => (
-          <li key={job.id}>{job.title} - {job.description}</li>
+        {jobs.map((job) => (
+          <li key={job.id}>
+            <strong>{job.title}</strong>: {job.description}
+            <button onClick={() => handleDelete(job.id)}>Eliminar</button>
+          </li>
         ))}
       </ul>
     </div>
   );
 }
+
+export default JobList;
