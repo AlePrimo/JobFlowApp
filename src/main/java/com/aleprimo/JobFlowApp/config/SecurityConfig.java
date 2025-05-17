@@ -48,6 +48,7 @@ public class SecurityConfig {
             }
 
             return roles.stream()
+                    .map(role -> "ROLE_" + role)
                     .map(SimpleGrantedAuthority::new) .collect(Collectors.toList());
         });
 
