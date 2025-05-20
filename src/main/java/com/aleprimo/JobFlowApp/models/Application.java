@@ -1,6 +1,7 @@
 package com.aleprimo.JobFlowApp.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -24,6 +25,7 @@ public class Application {
     Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     UserEntity user;
     @ManyToOne
     @JoinColumn(name = "job_id")

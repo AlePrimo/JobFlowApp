@@ -9,7 +9,7 @@ public class AuthUtils {
     public static String getAuthenticatedEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof Jwt jwt) {
-            return jwt.getClaimAsString("email"); // 👈 Ajustá el nombre del claim si es diferente
+            return jwt.getClaimAsString("email");
         }
         throw new RuntimeException("No se pudo obtener el email del usuario autenticado");
     }

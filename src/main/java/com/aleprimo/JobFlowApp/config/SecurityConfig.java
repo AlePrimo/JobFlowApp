@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,26 +17,36 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(authz -> authz
+//                        .requestMatchers("/api/user/**", "/api/application/createApplication").hasRole("USER")
+//                        .requestMatchers("/api/company/**", "/api/jobs/**", "/api/application/**").hasRole("COMPANY")
+//                        .requestMatchers("/api/user/downloadCV/**").permitAll()
+//                        .anyRequest().permitAll()
+//                )
+//                .oauth2ResourceServer(oauth2 -> oauth2
+//                        .jwt(jwt -> jwt
+//                                .jwtAuthenticationConverter(customJwtAuthenticationConverter())
+//                        )
+//                );
+//
+//        return http.build();
+//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/user/**", "/api/application/createApplication").hasRole("USER")
-                        .requestMatchers("/api/company/**", "/api/jobs/**", "/api/application/**").hasRole("COMPANY")
-                        .requestMatchers("/api/user/downloadCV/**").permitAll()
-                        .anyRequest().permitAll()
-                )
-                .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt
-                                .jwtAuthenticationConverter(customJwtAuthenticationConverter())
-                        )
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll() // 👈 Permitir todos los endpoints
                 );
+                //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt); // No se usará en esta etapa
 
         return http.build();
     }
-
-
 
     @Bean
     public JwtAuthenticationConverter customJwtAuthenticationConverter() {

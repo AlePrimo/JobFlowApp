@@ -1,6 +1,7 @@
 package com.aleprimo.JobFlowApp.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -29,6 +30,7 @@ public class UserEntity {
     LocalDate birthDate;
     String cvUrl;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     List<Application> applications = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     Role role;
