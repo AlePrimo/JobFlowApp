@@ -1,5 +1,6 @@
 package com.aleprimo.JobFlowApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -22,6 +23,7 @@ public class Company {
     Long id;
     String name;
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     List<Job> jobOffers = new ArrayList<>();
 
 }
