@@ -52,7 +52,7 @@ public class SecurityConfig {
             }
 
             return roles.stream()
-                    .map(role -> "ROLE_" + role)
+                    .map(role -> "ROLE_" + role.toUpperCase())
                     .map(SimpleGrantedAuthority::new) .collect(Collectors.toList());
         });
 
