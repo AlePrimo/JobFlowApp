@@ -98,10 +98,10 @@ public class UserController {
 
         UserEntity user = optionalUser.get();
 
-        String authEmail = getAuthenticatedEmail();
-        if (!user.getEmail().equals(authEmail)) {
-            return ResponseEntity.status(403).body("No tiene permiso para subir el CV de otro usuario.");
-        }
+//        String authEmail = getAuthenticatedEmail();
+//        if (!user.getEmail().equals(authEmail)) {
+//            return ResponseEntity.status(403).body("No tiene permiso para subir el CV de otro usuario.");
+//        }
 
         try {
             String filename = "cv_user_" + userId + ".pdf";
@@ -123,21 +123,21 @@ public class UserController {
     @GetMapping("/downloadCV/{filename:.+}")
     public ResponseEntity<Resource> downloadCV(@PathVariable String filename) {
         try {
-            String authEmail = getAuthenticatedEmail();
-
-            Optional<UserEntity> optionalUser = this.userService.findByEmail(authEmail);
-            if (optionalUser.isEmpty()) {
-                return ResponseEntity.status(403).build();
-            }
-
-            UserEntity authenticatedUser = optionalUser.get();
-
-            boolean isOwner = filename.equals("cv_user_" + authenticatedUser.getId() + ".pdf");
-            boolean isCompany = authenticatedUser.getRole() == Role.ROLE_COMPANY;
-
-            if (!isOwner && !isCompany) {
-                return ResponseEntity.status(403).body(null);
-            }
+//            String authEmail = getAuthenticatedEmail();
+//
+//            Optional<UserEntity> optionalUser = this.userService.findByEmail(authEmail);
+//            if (optionalUser.isEmpty()) {
+//                return ResponseEntity.status(403).build();
+//            }
+//
+//            UserEntity authenticatedUser = optionalUser.get();
+//
+//            boolean isOwner = filename.equals("cv_user_" + authenticatedUser.getId() + ".pdf");
+//            boolean isCompany = authenticatedUser.getRole() == Role.ROLE_COMPANY;
+//
+//            if (!isOwner && !isCompany) {
+//                return ResponseEntity.status(403).body(null);
+//            }
 
             Path filePath = Paths.get("uploads").resolve(filename).normalize();
             Resource resource = new UrlResource(filePath.toUri());

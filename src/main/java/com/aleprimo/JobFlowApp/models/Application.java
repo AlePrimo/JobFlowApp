@@ -29,6 +29,7 @@ public class Application {
     UserEntity user;
     @ManyToOne
     @JoinColumn(name = "job_id")
+    @JsonBackReference(value = "job-applications")
     Job job;
     @Column(name = "application_date")
     LocalDate applicationDate = LocalDate.now();

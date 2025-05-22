@@ -1,6 +1,7 @@
 package com.aleprimo.JobFlowApp.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -31,6 +32,7 @@ public class Job {
     @JoinColumn(name = "company_id")
     Company company;
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "job-applications")
     List<Application> applications = new ArrayList<>();
 
 }
