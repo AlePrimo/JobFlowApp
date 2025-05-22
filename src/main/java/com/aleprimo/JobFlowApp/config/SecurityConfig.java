@@ -17,36 +17,29 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(authz -> authz
-//                        .requestMatchers("/api/user/**", "/api/application/createApplication").hasRole("USER")
-//                        .requestMatchers("/api/company/**", "/api/jobs/**", "/api/application/**").hasRole("COMPANY")
-//                        .requestMatchers("/api/user/downloadCV/**").permitAll()
-//                        .anyRequest().permitAll()
-//                )
-//                .oauth2ResourceServer(oauth2 -> oauth2
-//                        .jwt(jwt -> jwt
-//                                .jwtAuthenticationConverter(customJwtAuthenticationConverter())
-//                        )
-//                );
-//
-//        return http.build();
-//    }
+
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // 👈 Permitir todos los endpoints
+                .authorizeHttpRequests(authz -> authz
+                        .requestMatchers("/api/user/**", "/api/application/createApplication").hasRole("USER")
+                        .requestMatchers("/api/company/**", "/api/jobs/**", "/api/application/**").hasRole("COMPANY")
+                        .requestMatchers("/api/user/downloadCV/**").permitAll()
+                        .anyRequest().permitAll()
+                )
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(jwt -> jwt
+                                .jwtAuthenticationConverter(customJwtAuthenticationConverter())
+                        )
                 );
-                //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt); // No se usará en esta etapa
 
         return http.build();
     }
+
+
 
     @Bean
     public JwtAuthenticationConverter customJwtAuthenticationConverter() {
