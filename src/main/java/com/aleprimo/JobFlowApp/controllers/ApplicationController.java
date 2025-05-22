@@ -1,7 +1,10 @@
 package com.aleprimo.JobFlowApp.controllers;
 
 
-import com.aleprimo.JobFlowApp.controllers.dtos.ApplicationDTO;
+import com.aleprimo.JobFlowApp.controllers.dtos.applicationDTOS.ApplicationDTO;
+import com.aleprimo.JobFlowApp.controllers.dtos.applicationDTOS.CompanyLiteDTO;
+import com.aleprimo.JobFlowApp.controllers.dtos.applicationDTOS.JobLiteDTO;
+import com.aleprimo.JobFlowApp.controllers.dtos.applicationDTOS.UserLiteDTO;
 import com.aleprimo.JobFlowApp.models.Application;
 import com.aleprimo.JobFlowApp.models.ApplicationStatus;
 import com.aleprimo.JobFlowApp.models.Job;
@@ -134,18 +137,36 @@ public class ApplicationController {
 
 
 
+    private ApplicationDTO mapToDTO(Application app) {
+        UserLiteDTO userDTO = new UserLiteDTO();
+        userDTO.setId(app.getUser().getId());
+        userDTO.setFullName(app.getUser().getFullName());
+        userDTO.setEmail(app.getUser().getEmail());
+        userDTO.setCvUrl(app.getUser().getCvUrl());
 
+        CompanyLiteDTO companyDTO = new CompanyLiteDTO();
+        companyDTO.setId(app.getJob().getCompany().getId());
+        companyDTO.setName(app.getJob().getCompany().getName());
 
+        JobLiteDTO jobDTO = new JobLiteDTO();
+        jobDTO.setId(app.getJob().getId());
+        jobDTO.setTitle(app.getJob().getTitle());
+        jobDTO.setDescription(app.getJob().getDescription());
+        jobDTO.setCreationDate(app.getJob().getCreationDate());
+        jobDTO.setCompany(companyDTO);
 
-    private ApplicationDTO mapToDTO(Application application) {
-        return ApplicationDTO.builder()
-                .id(application.getId())
-                .user(application.getUser())
-                .job(application.getJob())
-                .applicationDate(application.getApplicationDate())
-                .status(application.getStatus())
-                .build();
+        ApplicationDTO applicationDTO = new ApplicationDTO();
+        applicationDTO.setId(app.getId());
+        applicationDTO.setUser(userDTO);
+        applicationDTO.setJob(jobDTO);
+        applicationDTO.setApplicationDate(app.getApplicationDate());
+        applicationDTO.setStatus(app.getStatus());
+
+        return applicationDTO;
     }
+
+
+
 
 
 

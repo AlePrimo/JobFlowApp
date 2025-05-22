@@ -1,8 +1,7 @@
-package com.aleprimo.JobFlowApp.controllers.dtos;
+package com.aleprimo.JobFlowApp.controllers.dtos.applicationDTOS;
 
 import com.aleprimo.JobFlowApp.models.ApplicationStatus;
-import com.aleprimo.JobFlowApp.models.Job;
-import com.aleprimo.JobFlowApp.models.UserEntity;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.*;
@@ -18,18 +17,21 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ApplicationDTO {
 
-
     Long id;
+
     @NotNull(message = "El usuario es obligatorio")
-    UserEntity user;
+    UserLiteDTO user;
+
     @NotNull(message = "El trabajo es obligatorio")
-    Job job;
+    JobLiteDTO job;
+
     @NotNull(message = "La fecha de postulación es obligatoria")
-    @PastOrPresent(message = "La fecha de postulación no puede ser futura")
-    LocalDate applicationDate = LocalDate.now();
+    @PastOrPresent(message = "La fecha no puede ser futura")
+    LocalDate applicationDate;
 
     @NotNull(message = "El estado de la aplicación es obligatorio")
-    private ApplicationStatus status = ApplicationStatus.ENVIADA;
+    ApplicationStatus status;
+
 
 
 
