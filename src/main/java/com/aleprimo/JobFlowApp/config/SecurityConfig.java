@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
@@ -25,8 +23,15 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/user/**", "/api/application/createApplication").hasRole("USER")
-                        .requestMatchers("/api/company/**", "/api/jobs/**", "/api/application/**").hasRole("COMPANY")
+
+                        .requestMatchers("/api/user/**").hasRole("USER")
+                        .requestMatchers("/api/application/createApplication").hasRole("USER")
+                        .requestMatchers("/api/company/**").hasRole("COMPANY")
+                        .requestMatchers("/api/jobs/**").hasRole("COMPANY")
+                        .requestMatchers("/api/application/updateStatus/**").hasRole("COMPANY")
+                        .requestMatchers("/api/application/findAllByCompanyId/**").hasRole("COMPANY")
+                        .requestMatchers("/api/application/deleteById/**").hasRole("COMPANY")
+                        .requestMatchers("/api/application/findById/**").hasRole("COMPANY")
                         .requestMatchers("/api/user/downloadCV/**").permitAll()
                         .anyRequest().permitAll()
                 )
@@ -38,6 +43,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
 
 
