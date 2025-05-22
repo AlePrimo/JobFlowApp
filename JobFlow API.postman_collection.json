@@ -1,0 +1,1943 @@
+{
+	"info": {
+		"_postman_id": "fda511f6-5326-4acc-827d-1e739ab780d3",
+		"name": "JobFlow API",
+		"description": "Documentación interactiva del backend de JobFlow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40472192"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "updateUser",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Actualizacion  de un usuario",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \n    \"fullName\": \"Lucas Ramírez\",\n    \"email\": \"lucas.ramirez@example.com\",\n    \"birthDate\": \"1992-11-03\",\n    \"cvUrl\": \"/api/user/downloadCV/cv_user.pdf\",\n    \"applicationsIds\": [],\n    \"role\": \"ROLE_USER\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/user/updateUser/2",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														"updateUser",
+														"2"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"birthDate\": \"<date>\",\n  \"email\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<long>\",\n  \"cvUrl\": \"<string>\",\n  \"applicationsIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"role\": \"ROLE_USER\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/user/updateUser/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"user",
+																"updateUser",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"birthDate\": \"<date>\",\n  \"email\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<long>\",\n  \"cvUrl\": \"<string>\",\n  \"applicationsIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"role\": \"ROLE_USER\"\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "uploadCV",
+							"item": [
+								{
+									"name": "{userId}",
+									"item": [
+										{
+											"name": "Cargar el CV de un usuario por nombre de archivo",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"type": "file",
+															"src": "/C:/Users/Alejandro/Desktop/municipal falkner enero 2025(se pago 2 veces).pdf"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/user/uploadCV/2",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														"uploadCV",
+														"2"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Cargar el CV de un usuario por nombre de archivo",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "file",
+																	"type": "file",
+																	"src": "/C:/Users/Alejandro/Desktop/municipal falkner enero 2025(se pago 2 veces).pdf"
+																}
+															],
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/user/uploadCV/2",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"user",
+																"uploadCV",
+																"2"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "plain",
+													"header": [
+														{
+															"key": "Vary",
+															"value": "Origin"
+														},
+														{
+															"key": "Vary",
+															"value": "Access-Control-Request-Method"
+														},
+														{
+															"key": "Vary",
+															"value": "Access-Control-Request-Headers"
+														},
+														{
+															"key": "X-Content-Type-Options",
+															"value": "nosniff"
+														},
+														{
+															"key": "X-XSS-Protection",
+															"value": "0"
+														},
+														{
+															"key": "Cache-Control",
+															"value": "no-cache, no-store, max-age=0, must-revalidate"
+														},
+														{
+															"key": "Pragma",
+															"value": "no-cache"
+														},
+														{
+															"key": "Expires",
+															"value": "0"
+														},
+														{
+															"key": "X-Frame-Options",
+															"value": "DENY"
+														},
+														{
+															"key": "Content-Type",
+															"value": "text/plain;charset=UTF-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "64"
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 21 May 2025 23:39:38 GMT"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=60"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														}
+													],
+													"cookie": [],
+													"body": "CV subido correctamente. URL: /api/user/downloadCV/cv_user_2.pdf"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "saveUser",
+							"item": [
+								{
+									"name": "Creacion de un nuevo usuario",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"fullName\": \"Roberto Parna\",\n  \"email\": \"parna@example.com\",\n  \"birthDate\": \"1995-01-17\",\n  \"cvUrl\": \"https://miapp.com/cv/sofia_martinez.pdf\",\n  \"role\": \"ROLE_USER\"\n}\n",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/user/saveUser",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"user",
+												"saveUser"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"birthDate\": \"<date>\",\n  \"email\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<long>\",\n  \"cvUrl\": \"<string>\",\n  \"applicationsIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"role\": \"ROLE_USER\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/user/saveUser",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														"saveUser"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"birthDate\": \"<date>\",\n  \"email\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<long>\",\n  \"cvUrl\": \"<string>\",\n  \"applicationsIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"role\": \"ROLE_USER\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "findById",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Busqueda de un usuario por su ID",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/user/findById/2",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														"findById",
+														"2"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/user/findById/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"user",
+																"findById",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"birthDate\": \"<date>\",\n  \"email\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<long>\",\n  \"cvUrl\": \"<string>\",\n  \"applicationsIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"role\": \"ROLE_USER\"\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "downloadCV",
+							"item": [
+								{
+									"name": "{filename}",
+									"item": [
+										{
+											"name": "Descargar un CV (solo el dueño o una compañía puede hacerlo)",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/user/downloadCV/cv_user_1.pdf",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														"downloadCV",
+														"cv_user_1.pdf"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/user/downloadCV/:filename",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"user",
+																"downloadCV",
+																":filename"
+															],
+															"variable": [
+																{
+																	"key": "filename"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "<binary>"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "deleteUser",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Eliminacion  de un usuario por su ID",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/user/deleteUser/4",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														"deleteUser",
+														"4"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/user/deleteUser/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"user",
+																"deleteUser",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Busqueda de todos los usuarios disponibles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"user"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"birthDate\": \"<date>\",\n    \"email\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"id\": \"<long>\",\n    \"cvUrl\": \"<string>\",\n    \"applicationsIds\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"role\": \"ROLE_COMPANY\"\n  },\n  {\n    \"birthDate\": \"<date>\",\n    \"email\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"id\": \"<long>\",\n    \"cvUrl\": \"<string>\",\n    \"applicationsIds\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"role\": \"ROLE_USER\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "jobs",
+					"item": [
+						{
+							"name": "updateJob",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "{jobId}",
+											"item": [
+												{
+													"name": "Actualizacion de una oferta de empleo de una empresa segun su ID",
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"title\": \"Ingeniero de Machine Learning\",\n  \"description\": \"Entrenamiento y puesta en producción de modelos predictivos whaaat.\",\n  \"creationDate\": \"2025-05-20\",\n  \"applicationsIds\": []\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/jobs/updateJob/3/6",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"jobs",
+																"updateJob",
+																"3",
+																"6"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"creationDate\": \"<date>\",\n  \"description\": \"<string>\",\n  \"title\": \"<string>\",\n  \"id\": \"<long>\",\n  \"applications\": [\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_COMPANY\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ENVIADA\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_USER\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ACEPTADA\"\n    }\n  ]\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/jobs/updateJob/:companyId/:jobId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"jobs",
+																		"updateJob",
+																		":companyId",
+																		":jobId"
+																	],
+																	"variable": [
+																		{
+																			"key": "companyId"
+																		},
+																		{
+																			"key": "jobId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"creationDate\": \"<date>\",\n  \"description\": \"<string>\",\n  \"title\": \"<string>\",\n  \"id\": \"<long>\",\n  \"applications\": [\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_COMPANY\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ENVIADA\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_USER\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ACEPTADA\"\n    }\n  ]\n}"
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "saveJob",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "Creacion de una oferta de empleo de una empresa segun su ID",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"title\": \"Ordenanza\",\n  \"description\": \"Esclavo.\",\n  \"creationDate\": \"2025-05-20\",\n  \"applicationsIds\": []\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/jobs/saveJob/3",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"jobs",
+														"saveJob",
+														"3"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"creationDate\": \"<date>\",\n  \"description\": \"<string>\",\n  \"title\": \"<string>\",\n  \"id\": \"<long>\",\n  \"applications\": [\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_COMPANY\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ENVIADA\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_USER\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ACEPTADA\"\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/jobs/saveJob/:companyId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"jobs",
+																"saveJob",
+																":companyId"
+															],
+															"variable": [
+																{
+																	"key": "companyId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"creationDate\": \"<date>\",\n  \"description\": \"<string>\",\n  \"title\": \"<string>\",\n  \"id\": \"<long>\",\n  \"applications\": [\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_COMPANY\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ENVIADA\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_USER\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ACEPTADA\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "findById",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "{jobId}",
+											"item": [
+												{
+													"name": "Busqueda de un empleo por ID  y por ID de la empresa",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/jobs/findById/1/2",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"jobs",
+																"findById",
+																"1",
+																"2"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/jobs/findById/:companyId/:jobId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"jobs",
+																		"findById",
+																		":companyId",
+																		":jobId"
+																	],
+																	"variable": [
+																		{
+																			"key": "companyId"
+																		},
+																		{
+																			"key": "jobId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"creationDate\": \"<date>\",\n  \"description\": \"<string>\",\n  \"title\": \"<string>\",\n  \"id\": \"<long>\",\n  \"applications\": [\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_COMPANY\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ENVIADA\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"user\": {\n        \"id\": \"<long>\",\n        \"fullName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"birthDate\": \"<date>\",\n        \"cvUrl\": \"<string>\",\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ],\n        \"role\": \"ROLE_USER\"\n      },\n      \"job\": {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\",\n        \"creationDate\": \"<date>\",\n        \"company\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\",\n          \"jobOffers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n            }\n          ]\n        },\n        \"applications\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n          }\n        ]\n      },\n      \"applicationDate\": \"<date>\",\n      \"status\": \"ACEPTADA\"\n    }\n  ]\n}"
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "findByCompanyId",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "Busqueda de todos las ofertas de empleo de una empresa por su ID",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/jobs/findByCompanyId/3",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"jobs",
+														"findByCompanyId",
+														"3"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/jobs/findByCompanyId/:companyId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"jobs",
+																"findByCompanyId",
+																":companyId"
+															],
+															"variable": [
+																{
+																	"key": "companyId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "[\n  {\n    \"creationDate\": \"<date>\",\n    \"description\": \"<string>\",\n    \"title\": \"<string>\",\n    \"id\": \"<long>\",\n    \"applications\": [\n      {\n        \"id\": \"<long>\",\n        \"user\": {\n          \"id\": \"<long>\",\n          \"fullName\": \"<string>\",\n          \"email\": \"<string>\",\n          \"birthDate\": \"<date>\",\n          \"cvUrl\": \"<string>\",\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ],\n          \"role\": \"ROLE_COMPANY\"\n        },\n        \"job\": {\n          \"id\": \"<long>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"creationDate\": \"<date>\",\n          \"company\": {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\",\n            \"jobOffers\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              }\n            ]\n          },\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ]\n        },\n        \"applicationDate\": \"<date>\",\n        \"status\": \"ACEPTADA\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"user\": {\n          \"id\": \"<long>\",\n          \"fullName\": \"<string>\",\n          \"email\": \"<string>\",\n          \"birthDate\": \"<date>\",\n          \"cvUrl\": \"<string>\",\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ],\n          \"role\": \"ROLE_COMPANY\"\n        },\n        \"job\": {\n          \"id\": \"<long>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"creationDate\": \"<date>\",\n          \"company\": {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\",\n            \"jobOffers\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              }\n            ]\n          },\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ]\n        },\n        \"applicationDate\": \"<date>\",\n        \"status\": \"ENVIADA\"\n      }\n    ]\n  },\n  {\n    \"creationDate\": \"<date>\",\n    \"description\": \"<string>\",\n    \"title\": \"<string>\",\n    \"id\": \"<long>\",\n    \"applications\": [\n      {\n        \"id\": \"<long>\",\n        \"user\": {\n          \"id\": \"<long>\",\n          \"fullName\": \"<string>\",\n          \"email\": \"<string>\",\n          \"birthDate\": \"<date>\",\n          \"cvUrl\": \"<string>\",\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ],\n          \"role\": \"ROLE_COMPANY\"\n        },\n        \"job\": {\n          \"id\": \"<long>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"creationDate\": \"<date>\",\n          \"company\": {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\",\n            \"jobOffers\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              }\n            ]\n          },\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ]\n        },\n        \"applicationDate\": \"<date>\",\n        \"status\": \"RECHAZADA\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"user\": {\n          \"id\": \"<long>\",\n          \"fullName\": \"<string>\",\n          \"email\": \"<string>\",\n          \"birthDate\": \"<date>\",\n          \"cvUrl\": \"<string>\",\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ],\n          \"role\": \"ROLE_COMPANY\"\n        },\n        \"job\": {\n          \"id\": \"<long>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"creationDate\": \"<date>\",\n          \"company\": {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\",\n            \"jobOffers\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n              }\n            ]\n          },\n          \"applications\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n            }\n          ]\n        },\n        \"applicationDate\": \"<date>\",\n        \"status\": \"RECHAZADA\"\n      }\n    ]\n  }\n]"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "deleteJob",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "{jobId}",
+											"item": [
+												{
+													"name": "Eliminacion de una oferta de empleo de una empresa segun su ID",
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/jobs/deleteJob/3/7",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"jobs",
+																"deleteJob",
+																"3",
+																"7"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/jobs/deleteJob/:companyId/:jobId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"jobs",
+																		"deleteJob",
+																		":companyId",
+																		":jobId"
+																	],
+																	"variable": [
+																		{
+																			"key": "companyId"
+																		},
+																		{
+																			"key": "jobId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "company",
+					"item": [
+						{
+							"name": "updateCompany",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Actualizar los datos de una compañía",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"GlobalDevOps\",\n  \"jobOfferIds\": []\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/company/updateCompany/3",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"company",
+														"updateCompany",
+														"3"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"jobOfferIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/company/updateCompany/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"company",
+																"updateCompany",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"jobOfferIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "saveCompany",
+							"item": [
+								{
+									"name": "Crear una nueva compañía",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"Vandalay\",\n  \"jobOfferIds\": []\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/company/saveCompany",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"company",
+												"saveCompany"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"jobOfferIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/company/saveCompany",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"company",
+														"saveCompany"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"jobOfferIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "findById",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Obtener compañía por ID",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/company/findById/2",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"company",
+														"findById",
+														"2"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/company/findById/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"company",
+																"findById",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"jobOfferIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "findAll",
+							"item": [
+								{
+									"name": "Obtener todas las compañías",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/company/findAll",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"company",
+												"findAll"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/company/findAll",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"company",
+														"findAll"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"jobOfferIds\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  },\n  {\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"jobOfferIds\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "deleteById",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Eliminar una compañia por su ID",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/company/deleteById/5",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"company",
+														"deleteById",
+														"5"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/company/deleteById/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"company",
+																"deleteById",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "application",
+					"item": [
+						{
+							"name": "updateStatus",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "{applicationId}",
+											"item": [
+												{
+													"name": "Actualizacion del estado de una postulacion por parte de la empresa",
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/application/updateStatus/2/5?status=RECHAZADA",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"application",
+																"updateStatus",
+																"2",
+																"5"
+															],
+															"query": [
+																{
+																	"key": "status",
+																	"value": "RECHAZADA"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/application/updateStatus/:companyId/:applicationId?status=ACEPTADA",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"application",
+																		"updateStatus",
+																		":companyId",
+																		":applicationId"
+																	],
+																	"query": [
+																		{
+																			"key": "status",
+																			"value": "ACEPTADA",
+																			"description": "(Required) "
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "companyId"
+																		},
+																		{
+																			"key": "applicationId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"applicationDate\": \"<date>\",\n  \"job\": {\n    \"id\": \"<long>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"creationDate\": \"<date>\",\n    \"company\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"jobOffers\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n        }\n      ]\n    },\n    \"applications\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      }\n    ]\n  },\n  \"status\": \"ENVIADA\",\n  \"user\": {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"birthDate\": \"<date>\",\n    \"cvUrl\": \"<string>\",\n    \"applications\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      }\n    ],\n    \"role\": \"ROLE_USER\"\n  },\n  \"id\": \"<long>\"\n}"
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "createApplication",
+							"item": [
+								{
+									"name": "{userId}",
+									"item": [
+										{
+											"name": "{jobId}",
+											"item": [
+												{
+													"name": "Postulacion de un usuario a un empleo",
+													"request": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n  \"user\": { \"id\": 1 },\r\n  \"job\": { \"id\": 4 },\r\n  \"applicationDate\": \"2025-05-20\",\r\n  \"status\": \"ENVIADA\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/application/createApplication/2/5",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"application",
+																"createApplication",
+																"2",
+																"5"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/application/createApplication/:userId/:jobId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"application",
+																		"createApplication",
+																		":userId",
+																		":jobId"
+																	],
+																	"variable": [
+																		{
+																			"key": "userId"
+																		},
+																		{
+																			"key": "jobId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"applicationDate\": \"<date>\",\n  \"job\": {\n    \"id\": \"<long>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"creationDate\": \"<date>\",\n    \"company\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"jobOffers\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n        }\n      ]\n    },\n    \"applications\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      }\n    ]\n  },\n  \"status\": \"ENVIADA\",\n  \"user\": {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"birthDate\": \"<date>\",\n    \"cvUrl\": \"<string>\",\n    \"applications\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      }\n    ],\n    \"role\": \"ROLE_USER\"\n  },\n  \"id\": \"<long>\"\n}"
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "findById",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "{applicationId}",
+											"item": [
+												{
+													"name": "Busqueda de una postulacion segun el ID de la empresa y el ID de la postulacion",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/application/findById/2/5",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"application",
+																"findById",
+																"2",
+																"5"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "*/*"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/application/findById/:companyId/:applicationId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"application",
+																		"findById",
+																		":companyId",
+																		":applicationId"
+																	],
+																	"variable": [
+																		{
+																			"key": "companyId"
+																		},
+																		{
+																			"key": "applicationId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "*/*"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"applicationDate\": \"<date>\",\n  \"job\": {\n    \"id\": \"<long>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"creationDate\": \"<date>\",\n    \"company\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"jobOffers\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n        }\n      ]\n    },\n    \"applications\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      }\n    ]\n  },\n  \"status\": \"ENVIADA\",\n  \"user\": {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"birthDate\": \"<date>\",\n    \"cvUrl\": \"<string>\",\n    \"applications\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n      }\n    ],\n    \"role\": \"ROLE_USER\"\n  },\n  \"id\": \"<long>\"\n}"
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "findAllByCompany",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "Busqueda de todas las postulaciones de una empresa segun su ID",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/application/findAllByCompany/3",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"application",
+														"findAllByCompany",
+														"3"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/application/findAllByCompany/:companyId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"application",
+																"findAllByCompany",
+																":companyId"
+															],
+															"variable": [
+																{
+																	"key": "companyId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "[\n  {\n    \"applicationDate\": \"<date>\",\n    \"job\": {\n      \"id\": \"<long>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"creationDate\": \"<date>\",\n      \"company\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"jobOffers\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n          }\n        ]\n      },\n      \"applications\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        }\n      ]\n    },\n    \"status\": \"RECHAZADA\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"birthDate\": \"<date>\",\n      \"cvUrl\": \"<string>\",\n      \"applications\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        }\n      ],\n      \"role\": \"ROLE_COMPANY\"\n    },\n    \"id\": \"<long>\"\n  },\n  {\n    \"applicationDate\": \"<date>\",\n    \"job\": {\n      \"id\": \"<long>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"creationDate\": \"<date>\",\n      \"company\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"jobOffers\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Job detected>\"\n          }\n        ]\n      },\n      \"applications\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        }\n      ]\n    },\n    \"status\": \"RECHAZADA\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"birthDate\": \"<date>\",\n      \"cvUrl\": \"<string>\",\n      \"applications\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Application detected>\"\n        }\n      ],\n      \"role\": \"ROLE_USER\"\n    },\n    \"id\": \"<long>\"\n  }\n]"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "deleteById",
+							"item": [
+								{
+									"name": "{companyId}",
+									"item": [
+										{
+											"name": "{applicationId}",
+											"item": [
+												{
+													"name": "Eliminacion de una postulacion segu ID de compañia y de aplicacion",
+													"request": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/application/deleteById/2/4",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"application",
+																"deleteById",
+																"2",
+																"4"
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/application/deleteById/:companyId/:applicationId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"application",
+																		"deleteById",
+																		":companyId",
+																		":applicationId"
+																	],
+																	"variable": [
+																		{
+																			"key": "companyId"
+																		},
+																		{
+																			"key": "applicationId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
