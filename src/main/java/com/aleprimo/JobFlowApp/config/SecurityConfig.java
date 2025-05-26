@@ -2,6 +2,7 @@ package com.aleprimo.JobFlowApp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -23,7 +24,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
-
+                        .requestMatchers(HttpMethod.POST, "/api/user/saveUser").permitAll()
                         .requestMatchers("/api/user/**").hasRole("USER")
                         .requestMatchers("/api/application/createApplication").hasRole("USER")
                         .requestMatchers("/api/company/**").hasRole("COMPANY")
@@ -35,6 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/user/downloadCV/**").permitAll()
                         .anyRequest().permitAll()
                 )
+
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt
                                 .jwtAuthenticationConverter(customJwtAuthenticationConverter())
